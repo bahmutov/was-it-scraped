@@ -1,0 +1,32 @@
+{
+  "name": "was-it-scraped",
+  "version": "1.0.0",
+  "description": "Tracking scraped resources using an external database",
+  "main": "src",
+  "files": [
+    "src"
+  ],
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/was-it-scraped.git"
+  },
+  "keywords": [
+    "scraping"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/was-it-scraped/issues"
+  },
+  "homepage": "https://github.com/bahmutov/was-it-scraped#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^1.28.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  }
+}
