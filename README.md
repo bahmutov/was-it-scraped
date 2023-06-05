@@ -32,6 +32,10 @@ if (needsScraping) {
 }
 ```
 
+### filterToScrape
+
+Checks the list of items if some need scraping. Each item needs to have a property with the modified timestamp and URL to scrape. Yields the list of items that need to be scraped
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2022

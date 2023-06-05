@@ -94,4 +94,30 @@ function wasScrapedAfter(url, date) {
   })
 }
 
-module.exports = { markScraped, wasScraped, wasScrapedAfter }
+/**
+ * Goes through the list of items. For each one, gets the modified date
+ * and asks the "wasScrapedAfter" if the item should be scraped.
+ * Returns a list of items to be scraped.
+ * @param {any[]} items List of items to check
+ * @param {string} modifiedProperty Property name inside each item that is a timestamp or a string date
+ * @param {string} urlProperty URL of the item to be scraped
+ */
+async function filterToScrape(items, modifiedProperty, urlProperty) {
+  const results = []
+  for (const item of items) {
+    const modified =
+      typeof item[modifiedProperty] === 'string'
+        ? new Date(item[modifiedProperty])
+        : item[modifiedProperty]
+    const itemUrl = item[urlProperty]
+    const scraped = await wasScrapedAfter(itemUrl, modified)
+    if (!scraped) {
+      results.push(item)
+    }
+  }
+
+  // return the list of items to be scraped
+  return results
+}
+
+module.exports = { markScraped, wasScraped, wasScrapedAfter, filterToScrape }
