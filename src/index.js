@@ -1,5 +1,7 @@
 // @ts-check
 const { createClient } = require('@supabase/supabase-js')
+// @ts-ignore
+const _ = require('lodash')
 
 // Create a single supabase client for interacting with your database
 const supabaseUrl = process.env.SUPABASE_URL
@@ -105,11 +107,11 @@ function wasScrapedAfter(url, date) {
 async function filterToScrape(items, modifiedProperty, urlProperty) {
   const results = []
   for (const item of items) {
-    const modified =
-      typeof item[modifiedProperty] === 'string'
-        ? new Date(item[modifiedProperty])
-        : item[modifiedProperty]
-    const itemUrl = item[urlProperty]
+    const modifiedValue = _.get(item, modifiedProperty)
+    const modified = _.isDate(modifiedValue)
+      ? modifiedValue
+      : new Date(modifiedValue)
+    const itemUrl = _.get(item, urlProperty)
     const scraped = await wasScrapedAfter(itemUrl, modified)
     if (!scraped) {
       results.push(item)

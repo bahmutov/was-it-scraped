@@ -34,7 +34,17 @@ if (needsScraping) {
 
 ### filterToScrape
 
-Checks the list of items if some need scraping. Each item needs to have a property with the modified timestamp and URL to scrape. Yields the list of items that need to be scraped
+Checks the list of items if some need scraping. Each item needs to have a property with the modified timestamp and URL to scrape. Yields the list of items that need to be scraped.
+
+```js
+const toScrape = await filterToScrape(items, 'updatedAt', 'url')
+```
+
+**Tip:** the property could be nested
+
+```js
+const toScrape = await filterToScrape(items, 'meta.updatedAt', 'meta.web.url')
+```
 
 ## Small print
 

@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/bahmutov/was-it-scraped#readme",
   "dependencies": {
-    "@supabase/supabase-js": "^1.28.1"
+    "@supabase/supabase-js": "^1.28.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "prettier": "^2.4.1",
