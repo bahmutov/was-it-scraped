@@ -15,7 +15,7 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 /**
- * @type {'post'|'video'|'presentation'} Scraped resource type
+ * @type {'post'|'video'|'presentation'|'lesson'} Scraped resource type
  */
 const scrapedType = 'post'
 
@@ -53,6 +53,10 @@ function getOneItem(url) {
     .then((data) => data[0])
 }
 
+/**
+ * Marks a given URL scraped and entered into the search index.
+ * @param {string} url
+ */
 function markScraped(url, type = scrapedType) {
   const row = { url, type }
   return getOneItem(url).then((item) => {
